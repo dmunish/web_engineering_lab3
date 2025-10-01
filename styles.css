@@ -1,0 +1,420 @@
+:root {
+    --text-color: #1a1c20;
+    --link-color: #4a76ee;
+    --background-color: #eeeff1;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    padding-top: var(--nav-height);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    height: var(--nav-height);
+    background-color: var(--background-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+nav .left a {
+    color: var(--text-color);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+nav .center {
+    display: flex;
+    gap: 20px;
+}
+
+nav .center a {
+    color: var(--text-color);
+    position: relative;
+}
+
+nav .center a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--link-color);
+    transition: width 0.3s;
+}
+
+nav .center a:hover::after,
+nav .center a.active::after {
+    width: 100%;
+}
+
+nav .right a {
+    color: var(--text-color);
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav .right a:hover {
+    color: var(--link-color);
+}
+
+nav .right a span {
+    margin-left: 8px;
+}
+
+/* Common Section Styles */
+.section-container {
+    padding: 50px;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* HERO */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.hero-section .text {
+    flex: 5;
+}
+
+.hero-section .text h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-section .text p {
+    margin-bottom: 30px;
+}
+
+.hero-section .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.hero-section .social-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    border: 2px solid var(--link-color);
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.hero-section .social-links a:hover {
+    background-color: var(--link-color);
+    color: white;
+}
+
+.hero-section .social-links i {
+    margin-right: 8px;
+}
+
+.hero-section .headshot {
+    flex: 2;
+    display: flex;
+    justify-content: right;
+}
+
+.hero-section .headshot img {
+    border-radius: 50%;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Skills */
+.skills-section .cells {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.skills-section .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    padding: 15px 20px;
+    gap: 10px;
+    border: 2px solid #d3d3d3;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skills-section .cell:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skills-section .cell span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.skills-section .cell img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+/* IMAGE GALLERY */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: white;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.gallery-overlay p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* CONTACT */
+.contact-group {
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-group .text {
+    flex: 1;
+    margin-top: 20px;
+}
+
+.contact-group form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-group form input,
+.contact-group form textarea {
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid var(--link-color);
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.contact-group form input:focus,
+.contact-group form textarea:focus {
+    border-color: var(--text-color);
+}
+
+.contact-group form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-group form button {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-color: var(--link-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.contact-group form button:hover {
+    background-color: var(--text-color);
+}
+
+/* HOBBIES */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.hobby-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+}
+
+.hobby-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.hobby-content {
+    padding: 20px;
+}
+
+.hobby-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.hobby-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 850px) {
+    .hero-section .text h2 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-container {
+        padding: 30px 20px;
+    }
+
+    nav {
+        padding: 0 20px;
+    }
+
+    nav .center {
+        display: none;
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        padding: 30px 20px;
+    }
+
+    .hero-section .headshot img {
+        width: 300px;
+    }
+
+    .contact-group {
+        flex-direction: column;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    nav .right a span {
+        display: none;
+    }
+
+    .hero-section .text h2 {
+        font-size: 28px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+    }
+}
